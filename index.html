@@ -1,0 +1,52 @@
+ <head>
+	<meta charset="UTF-8">
+	<title>Mongoose Test</title>
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+</head> 
+
+<style>
+	table, th, td, div { border: 0.5px outset black; background-image: url(bg2.png); background-repeat: repeat;}
+	* { font-size:12px; margin: 8px; padding:0; text-align:center; overflow: hidden}
+	body, html { background-image: url(bg1.png); background-repeat: no-repeat; background-size: 100% 100%; margin:0px; padding: 0px; height:100%; }
+	div { display: flex; justify-content: center; align-items: center;﻿}
+</style>
+
+<body>
+
+	<table id="navbar">
+		<td><b>Mongoose Test</b></td>
+		<td><a href="javascript:;">Database Demo</a></td>
+		<td><a href="javascript:;">WebGL</a></td>
+		<td><a href="javascript:;">Text to Speech</a></td>
+		<td><a href="javascript:;">Illegal Request</a></td>
+		<td><input id="password_textbox"></td>
+	</table>
+	
+	<div id="load_zone" style="height: calc(100% - 67px); vertical-align: middle;">
+		<div id='page'></div>
+	</div>
+
+</body>
+
+<script language='javascript'>
+
+	var socket = new WebSocket('ws://' + location.host + '/ws');
+	
+	var navbuttons = document.querySelectorAll("#navbar a");
+
+	for (var i = 0; i < navbuttons.length; i++)
+		navbuttons[i].addEventListener('click', send, false);
+
+	function send(ev)
+	{
+		socket.send(ev.srcElement.innerHTML);
+	};
+
+	socket.onmessage = function(ev)
+	{
+		document.getElementById('load_zone').innerHTML = ev.data;
+	};
+
+</script>
