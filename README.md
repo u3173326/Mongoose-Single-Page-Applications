@@ -5,5 +5,4 @@ This is unfinished and does not work.
 
 I plan to add the page HTML, CSS and Javascript to a C file for each page, and each individual page will use a struct called "page".
 
-This struct contains the content (HTML, CSS, JS), a function pointer to an event handler for each page, and a
-boolean for whether or not the page requires authorisation.
+This struct contains the content (HTML, CSS, JS) which will be loaded into the innerHTML of "load_zone" in index.html, a function pointer to an event handler for each page, and a boolean for whether or not the page requires authorisation.
